@@ -1,0 +1,72 @@
+---
+import LangSwitch from './LangSwitch.astro';
+import { links } from '../config';
+import { getDictionary, pagePath, type Locale } from '../i18n';
+
+interface Props { locale: Locale; path?: string }
+const { locale, path = '' } = Astro.props;
+const t = getDictionary(locale);
+
+const nav = [
+  { label: t.nav.how, path: 'how-it-works' },
+  { label: t.nav.docs, path: 'docs' },
+  { label: t.nav.community, path: 'community' },
+];
+---
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href={pagePath(locale)} aria-label="Claimstone"><i aria-hidden="true"></i>Claimstone</a>
+
+    <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav" data-burger>
+      <span class="sr">{t.a11y.menu}</span>
+      <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="2"/></svg>
+    </button>
+
+    <div class="panel" id="site-nav" data-panel>
+      <nav class="links" aria-label={t.a11y.mainNav}>
+        {nav.map((n) => (
+          <a href={pagePath(locale, n.path)} aria-current={path === n.path ? 'page' : undefined}>{n.label}</a>
+        ))}
+      </nav>
+      <div class="end">
+        <LangSwitch locale={locale} path={path} />
+        <a class="btn btn-ghost btn-sm on-dark" href={links.repo}>{t.nav.github}</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const panel = document.querySelector<HTMLElement>('[data-panel]');
+  burger?.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    panel?.toggleAttribute('data-open', !open);
+  });
+</script>
+
+<style>
+  .top { background: var(--hero-bg); color: var(--hero-fg); }
+  .bar { display: flex; align-items: center; gap: 28px; padding-block: 22px; }
+  .brand { font-weight: 700; font-size: 19px; letter-spacing: -0.02em; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+  .brand i { width: 14px; height: 14px; background: var(--accent); display: inline-block; border-radius: 3px; transform: rotate(45deg); }
+  .panel { display: flex; align-items: center; gap: 28px; flex: 1; }
+  .links { display: flex; gap: 22px; font-size: 14px; }
+  .links a { color: var(--hero-muted); text-decoration: none; padding-block: 4px; border-bottom: 1px solid transparent; }
+  .links a:hover { color: var(--hero-fg); }
+  .links a[aria-current='page'] { color: var(--hero-fg); border-bottom-color: var(--accent); }
+  .end { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+  .burger { display: none; margin-left: auto; background: transparent; color: var(--hero-fg); border: 1px solid var(--hero-line); border-radius: 8px; padding: 9px 11px; cursor: pointer; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 760px) {
+    .bar { flex-wrap: wrap; gap: 0 12px; }
+    .burger { display: inline-flex; }
+    .panel { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 18px; padding-block: 18px 6px; }
+    .panel[data-open] { display: flex; }
+    .links { flex-direction: column; gap: 4px; font-size: 16px; }
+    .links a { padding-block: 8px; }
+    .end { margin-left: 0; justify-content: space-between; }
+  }
+</style>

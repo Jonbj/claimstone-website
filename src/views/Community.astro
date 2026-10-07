@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Join from '../components/Join.astro';
+import { links } from '../config';
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = getDictionary(locale).communityPage;
+const hrefs: Record<string, string> = links;
+---
+<Base locale={locale} path="community" title={p.title} description={p.description}>
+  <PageHero eyebrow={p.eyebrow} title={p.h1} lede={p.lede} />
+  <Join locale={locale} />
+  <section class="band">
+    <div class="wrap">
+      <div class="head"><h2>{p.ruleH2}</h2></div>
+      <blockquote>
+        <p>{p.rule}</p>
+        <footer>{p.ruleNote} <a href={links.contributing}>CONTRIBUTING.md</a></footer>
+      </blockquote>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="head"><h2>{p.channelsH2}</h2></div>
+      <div class="channels">
+        {p.channels.map((c) => (
+          <div>
+            <h3>{c.h}</h3>
+            <p>{c.p}</p>
+            <a class="more-link" href={hrefs[c.href]}>{c.cta}</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  blockquote { margin: 0; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 12px; padding: 28px; max-width: 72ch; display: grid; gap: 14px; }
+  blockquote p { font-size: 18px; line-height: 1.55; }
+  blockquote footer { color: var(--muted); font-size: 14px; }
+  blockquote footer a { color: var(--accent-ink); }
+  .channels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .channels div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 10px; align-content: start; }
+  .channels h3 { font-size: 19px; font-weight: 600; }
+  .channels p { color: var(--muted); font-size: 15px; }
+  @media (max-width: 960px) { .channels { grid-template-columns: minmax(0, 1fr); } }
+</style>

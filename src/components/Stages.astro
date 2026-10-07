@@ -1,0 +1,38 @@
+---
+import { getDictionary, type Locale } from '../i18n';
+interface Props { locale: Locale }
+const s = getDictionary(Astro.props.locale).stages;
+---
+<section class="band" id="stages">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">{s.eyebrow}</p>
+      <h2>{s.h2}</h2>
+      <p>{s.lede}</p>
+    </div>
+    <ol class="stages">
+      {s.items.map((i, n) => (
+        <li class="stage">
+          <span class="n">{n + 1}</span>
+          <h3>{i.name}</h3>
+          <p>{i.p}</p>
+          <span class="writes">{i.writes}</span>
+        </li>
+      ))}
+    </ol>
+    <div class="sign"><strong>{s.signName}</strong><span>{s.sign}</span></div>
+  </div>
+</section>
+
+<style>
+  .stages { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .stage { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+  .n { font-family: var(--mono); font-size: 12px; color: var(--accent-ink); }
+  h3 { font-size: 19px; font-weight: 600; font-family: var(--mono); letter-spacing: -0.01em; }
+  .stage p { color: var(--muted); font-size: 15px; }
+  .writes { margin-top: 4px; font-family: var(--mono); font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+  .sign { margin-top: 16px; border: 1px dashed var(--line); border-radius: 12px; padding: 18px 22px; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; color: var(--muted); }
+  .sign strong { color: var(--fg); font-family: var(--mono); font-weight: 500; }
+  @media (max-width: 960px) { .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .stages { grid-template-columns: minmax(0, 1fr); } }
+</style>

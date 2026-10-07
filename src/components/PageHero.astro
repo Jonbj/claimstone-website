@@ -1,0 +1,17 @@
+---
+interface Props { eyebrow: string; title: string; lede?: string }
+const { eyebrow, title, lede } = Astro.props;
+---
+<section class="ph">
+  <div class="wrap">
+    <p class="eyebrow on-dark">{eyebrow}</p>
+    <h1>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+  </div>
+</section>
+
+<style>
+  .ph { background: var(--hero-bg); color: var(--hero-fg); padding-block: 36px 72px; }
+  h1 { margin-top: 14px; font-size: clamp(34px, 4.6vw, 54px); line-height: 1.06; font-weight: 600; max-width: 22ch; }
+  .lede { margin-top: 18px; font-size: 18px; color: var(--hero-muted); max-width: 58ch; }
+</style>

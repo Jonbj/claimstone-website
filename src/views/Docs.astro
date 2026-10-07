@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { links } from '../config';
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = getDictionary(locale).docsPage;
+const hrefs: Record<string, string> = links;
+const target = (i: { href: string; hrefIt?: string }) =>
+  locale === 'it' && i.hrefIt ? hrefs[i.hrefIt] : hrefs[i.href];
+---
+<Base locale={locale} path="docs" title={p.title} description={p.description}>
+  <PageHero eyebrow={p.eyebrow} title={p.h1} lede={p.lede} />
+  <section class="band">
+    <div class="wrap">
+      <ul class="docs">
+        {p.items.map((i) => (
+          <li>
+            <h2>{i.h}</h2>
+            <p>{i.p}</p>
+            <a class="more-link" href={target(i)}>{p.open}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .docs { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .docs li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 10px; align-content: start; }
+  .docs h2 { font-size: 20px; font-weight: 600; }
+  .docs p { color: var(--muted); font-size: 15px; }
+  @media (max-width: 760px) { .docs { grid-template-columns: minmax(0, 1fr); } }
+</style>

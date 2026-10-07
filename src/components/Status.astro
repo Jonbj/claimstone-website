@@ -1,0 +1,29 @@
+---
+import { getDictionary, type Locale } from '../i18n';
+interface Props { locale: Locale }
+const s = getDictionary(Astro.props.locale).status;
+---
+<section class="band" id="status">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">{s.eyebrow}</p>
+      <h2>{s.h2}</h2>
+      <p>{s.lede}</p>
+    </div>
+    <dl class="stats">
+      {s.items.map((i) => (
+        <div class:list={['stat', { zero: i.zero }]}><dt>{i.value}</dt><dd>{i.label}</dd></div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 4px; align-content: start; }
+  dt { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; order: 0; }
+  dd { margin: 0; color: var(--muted); font-size: 14px; order: 1; }
+  .zero dt { color: var(--accent-ink); }
+  @media (max-width: 960px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .stats { grid-template-columns: minmax(0, 1fr); } }
+</style>

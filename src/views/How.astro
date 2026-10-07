@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Stages from '../components/Stages.astro';
+import Verdicts from '../components/Verdicts.astro';
+import { links } from '../config';
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const p = getDictionary(locale).howPage;
+const guide = locale === 'it' ? links.guideIt : links.guide;
+---
+<Base locale={locale} path="how-it-works" title={p.title} description={p.description}>
+  <PageHero eyebrow={p.eyebrow} title={p.h1} lede={p.lede} />
+  <Stages locale={locale} />
+  <Verdicts locale={locale} />
+  <section class="band">
+    <div class="wrap">
+      <div class="head"><h2>{p.invariantsH2}</h2></div>
+      <ul class="rules">
+        {p.invariants.map((r) => (
+          <li><h3>{r.h}</h3><p>{r.p}</p></li>
+        ))}
+      </ul>
+      <p class="more"><a class="btn btn-primary" href={guide}>{p.readMore}</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .rules { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .rules li { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+  .rules h3 { font-size: 18px; font-weight: 600; }
+  .rules p { color: var(--muted); font-size: 15px; }
+  .more { margin-top: 32px; }
+  @media (max-width: 760px) { .rules { grid-template-columns: minmax(0, 1fr); } }
+</style>

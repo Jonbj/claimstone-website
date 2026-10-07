@@ -1,0 +1,47 @@
+---
+import ClaimCard from './ClaimCard.astro';
+import { links } from '../config';
+import { getDictionary, type Locale } from '../i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const h = getDictionary(locale).home;
+const guide = locale === 'it' ? links.guideIt : links.guide;
+---
+<section class="hero">
+  <div class="wrap grid">
+    <div>
+      <p class="eyebrow on-dark">{h.eyebrow}</p>
+      <h1 set:html={h.h1} />
+      <p class="lede" set:html={h.lede} />
+      <div class="cta">
+        <a class="btn btn-primary" href={links.repo}>{h.ctaPrimary}</a>
+        <a class="btn btn-ghost on-dark" href={guide}>{h.ctaSecondary}</a>
+      </div>
+      <ul class="facts">{h.facts.map((f) => <li>{f}</li>)}</ul>
+    </div>
+    <ClaimCard locale={locale} />
+  </div>
+</section>
+
+<style>
+  .hero { background: var(--hero-bg); color: var(--hero-fg); position: relative; overflow: hidden; isolation: isolate; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0.85;
+    background:
+      radial-gradient(60% 55% at 78% 18%, var(--accent-soft), transparent 70%),
+      linear-gradient(var(--hero-line) 1px, transparent 1px) 0 0 / 100% 56px,
+      linear-gradient(90deg, var(--hero-line) 1px, transparent 1px) 0 0 / 56px 100%;
+    -webkit-mask-image: linear-gradient(#000 40%, transparent);
+    mask-image: linear-gradient(#000 40%, transparent);
+  }
+  .grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; padding-block: 40px 88px; align-items: center; }
+  h1 { margin-top: 14px; font-size: clamp(38px, 5.4vw, 66px); line-height: 1.04; font-weight: 600; }
+  h1 :global(em) { font-style: normal; color: var(--accent); }
+  .lede { margin-top: 22px; font-size: 18px; color: var(--hero-muted); max-width: 52ch; }
+  .lede :global(strong) { color: var(--hero-fg); font-weight: 500; }
+  .cta { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .facts { list-style: none; padding: 0; margin: 34px 0 0; display: flex; gap: 8px 22px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; color: var(--hero-muted); }
+  .facts li::before { content: '·'; margin-right: 8px; color: var(--accent); }
+  @media (max-width: 960px) { .grid { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 24px 64px; } }
+</style>

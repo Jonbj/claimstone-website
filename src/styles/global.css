@@ -1,0 +1,90 @@
+@import '@fontsource-variable/schibsted-grotesk';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+/* Tokens. The hero is always dark; the body follows the system theme. Amber is the one accent. */
+:root {
+  --sans: 'Schibsted Grotesk Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --hero-bg: #0a0c0f;
+  --hero-fg: #f1f3f5;
+  --hero-muted: #98a2ad;
+  --hero-line: #232a31;
+  --hero-card: #11151a;
+
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --fg: #14171a;
+  --muted: #56616b;
+  --line: #dde1e5;
+  --reject: #b4372b;
+
+  --accent: #f5a524;
+  --accent-ink: #94560a;
+  --accent-soft: rgba(245, 165, 36, 0.16);
+  --on-accent: #0a0c0f;
+  --danger-on-dark: #ff8a7a;
+
+  --wrap: 1120px;
+  --gutter: 20px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1114;
+    --surface: #151a1f;
+    --fg: #e9ecef;
+    --muted: #9aa4ae;
+    --line: #252c33;
+    --reject: #ff8a7a;
+    --accent-ink: var(--accent);
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+h1, h2, h3 { text-wrap: balance; letter-spacing: -0.02em; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent-soft); }
+
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.skip { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--accent); color: var(--on-accent); padding: 8px 14px; border-radius: 6px; font-weight: 600; }
+.skip:focus { left: 8px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-ink); }
+.on-dark .eyebrow, .eyebrow.on-dark { color: var(--accent); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid transparent; cursor: pointer; font-family: inherit; }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { border-color: var(--line); color: var(--fg); background: transparent; }
+.btn-ghost:hover { border-color: var(--muted); }
+.btn-ghost.on-dark { border-color: var(--hero-line); color: var(--hero-fg); background: rgba(255, 255, 255, 0.03); }
+.btn-ghost.on-dark:hover { border-color: var(--hero-muted); }
+.btn-sm { padding: 7px 13px; font-size: 13px; }
+
+code { font-family: var(--mono); font-size: 0.86em; background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; color: var(--fg); overflow-wrap: anywhere; }
+
+/* Page sections shared by every page */
+.band { padding-block: 88px; }
+.band + .band { border-top: 1px solid var(--line); }
+.head { max-width: 62ch; display: grid; gap: 14px; margin-bottom: 44px; }
+.head h2 { font-size: clamp(28px, 3.6vw, 42px); line-height: 1.1; font-weight: 600; }
+.head p { color: var(--muted); font-size: 17px; }
+.more-link { font-weight: 600; font-size: 14px; color: var(--accent-ink); text-decoration: none; }
+.more-link:hover { text-decoration: underline; }
+
+@media (max-width: 620px) { .band { padding-block: 60px; } }

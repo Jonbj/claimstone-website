@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Why from '../components/Why.astro';
+import Stages from '../components/Stages.astro';
+import Verdicts from '../components/Verdicts.astro';
+import Status from '../components/Status.astro';
+import Join from '../components/Join.astro';
+import type { Locale } from '../i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+<Base locale={locale} path="">
+  <Hero locale={locale} />
+  <Why locale={locale} />
+  <Stages locale={locale} />
+  <Verdicts locale={locale} />
+  <Status locale={locale} />
+  <Join locale={locale} />
+</Base>
