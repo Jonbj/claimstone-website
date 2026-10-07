@@ -2,6 +2,7 @@
 import { getDictionary, type Locale } from '../i18n';
 interface Props { locale: Locale }
 const v = getDictionary(Astro.props.locale).verdicts;
+const [first, second] = v.groups;
 ---
 <section class="band" id="verdicts">
   <div class="wrap">
@@ -10,21 +11,39 @@ const v = getDictionary(Astro.props.locale).verdicts;
       <h2>{v.h2}</h2>
       <p>{v.lede}</p>
     </div>
-    <div class="states">
-      {v.items.map((i) => (
-        <div class="state"><h3>{i.name}</h3><p>{i.p}</p></div>
+
+    <h3 class="group">{first.label}</h3>
+    <div class="states two">
+      {first.items.map((i) => (
+        <div class="state"><code>{i.name}</code><h4>{i.title}</h4><p>{i.p}</p></div>
       ))}
     </div>
+
+    <h3 class="group">{second.label}</h3>
+    <div class="states three">
+      {second.items.map((i) => (
+        <div class="state"><code>{i.name}</code><h4>{i.title}</h4><p>{i.p}</p></div>
+      ))}
+    </div>
+    <p class="bridge">{v.bridge}</p>
+
     <p class="fine">{v.fine}</p>
+    <p class="fine unsigned">{v.unsigned}</p>
   </div>
 </section>
 
 <style>
-  .states { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
-  .state { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 10px; padding: 16px; display: grid; gap: 8px; align-content: start; }
-  h3 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.02em; font-weight: 500; overflow-wrap: anywhere; }
-  .state p { font-size: 14px; color: var(--muted); }
-  .fine { margin-top: 20px; color: var(--muted); font-size: 14px; max-width: 70ch; }
-  @media (max-width: 960px) { .states { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 620px) { .states { grid-template-columns: minmax(0, 1fr); } }
+  .group { margin: 32px 0 14px; font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); }
+  .group:first-of-type { margin-top: 0; }
+  .states { display: grid; gap: 12px; }
+  .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .state { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 10px; padding: 18px; display: grid; gap: 8px; align-content: start; }
+  .state code { justify-self: start; font-size: 11px; letter-spacing: 0.02em; background: var(--accent-soft); overflow-wrap: anywhere; }
+  h4 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+  .state p { font-size: 15px; color: var(--muted); }
+  .bridge { margin-top: 16px; padding: 14px 18px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 8px 8px 0; color: var(--fg); max-width: 78ch; }
+  .fine { margin-top: 28px; color: var(--muted); font-size: 14px; max-width: 72ch; }
+  .unsigned { margin-top: 8px; font-family: var(--mono); font-size: 13px; }
+  @media (max-width: 760px) { .two, .three { grid-template-columns: minmax(0, 1fr); } }
 </style>

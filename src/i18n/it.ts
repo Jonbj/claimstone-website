@@ -96,17 +96,29 @@ export const it: Dictionary = {
     ],
   },
   verdicts: {
-    eyebrow: 'Il contratto dei verdetti',
-    h2: 'Cinque stati. Nessuno si fonde in un altro.',
-    lede: '«Non abbiamo trovato prove» e «non c’è alcun effetto» sono frasi diverse, e lo è anche «gli studi sono in disaccordo».',
-    items: [
-      { name: 'SUPPORTED', p: 'Le prove vanno in una direzione, con la copertura per affermarlo.' },
-      { name: 'CONTRADICTED', p: 'Le prove vanno nella direzione opposta.' },
-      { name: 'CONTESTED_IN_LITERATURE', p: 'Le fonti sono in disaccordo, e il disaccordo è il risultato.' },
-      { name: 'UNANSWERED_IN_LITERATURE', p: 'Le fonti lette non rispondono. Non equivale a «nessun effetto».' },
-      { name: 'NEVER_ASKED', p: 'Nessuno ha studiato questa domanda, e una persona ha verificato che non sia solo un vuoto della ricerca.' },
+    eyebrow: 'Le risposte',
+    h2: 'Non solo sì o no: cinque risposte possibili.',
+    lede: 'Una domanda posta agli studi non sempre ha un sì o un no. Ogni verdetto dice che cosa le prove permettono di affermare, e non di più. Lo registra una persona dopo aver letto il profilo di evidenza.',
+    groups: [
+      {
+        label: 'Le prove indicano una direzione',
+        items: [
+          { name: 'SUPPORTED', title: 'Le prove dicono di sì.', p: 'Il profilo convince, e chi firma scrive perché.' },
+          { name: 'CONTRADICTED', title: 'Le prove dicono il contrario.', p: 'Il profilo convince nell’altra direzione.' },
+        ],
+      },
+      {
+        label: 'Le prove non decidono, e può succedere in tre modi',
+        items: [
+          { name: 'CONTESTED_IN_LITERATURE', title: 'Gli studi non sono d’accordo.', p: 'Gli studi parlano e si contraddicono in modo che non si riesce a ricomporre.' },
+          { name: 'UNANSWERED_IN_LITERATURE', title: 'Gli studi non risolvono la questione.', p: 'Sono stati letti, e non bastano per decidere.' },
+          { name: 'NEVER_ASKED', title: 'Nessuno l’ha studiata.', p: 'Una persona ha verificato che non sia solo un vuoto della ricerca.' },
+        ],
+      },
     ],
-    fine: 'Le domande sono numerate e congelate. Cambiare l’elenco è un salto di versione datato, imposto da un digest di id, testo e tipo di ogni domanda.',
+    bridge: 'Questi tre sembrano uguali da fuori, e non lo sono. Trattare «gli studi non sono d’accordo» come «non si è trovato nulla» è l’errore che Claimstone esiste per evitare.',
+    fine: 'La firma è legata alle prove che la persona ha visto: se le prove cambiano dopo, il verdetto risulta obsoleto. Le domande sono numerate e congelate, e cambiare l’elenco è un cambio di versione datato.',
+    unsigned: 'Nessun verdetto è stato ancora firmato. Questi sono gli stati che il progetto riconosce.',
   },
   status: {
     eyebrow: 'A che punto siamo',

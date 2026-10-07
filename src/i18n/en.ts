@@ -106,17 +106,29 @@ export const en = {
     ] as StageItem[],
   },
   verdicts: {
-    eyebrow: 'The verdict contract',
-    h2: 'Five states. None collapses into another.',
-    lede: '“We found no evidence” and “there is no effect” are different sentences, and so is “the literature disagrees.”',
-    items: [
-      { name: 'SUPPORTED', p: 'The evidence points one way, with the coverage to say so.' },
-      { name: 'CONTRADICTED', p: 'The evidence points the other way.' },
-      { name: 'CONTESTED_IN_LITERATURE', p: 'Sources disagree, and the disagreement is the finding.' },
-      { name: 'UNANSWERED_IN_LITERATURE', p: 'The sources read do not answer it. That is not “no effect.”' },
-      { name: 'NEVER_ASKED', p: 'Nobody has studied this question, and a person checked that it is not just a gap in the search.' },
+    eyebrow: 'The answers',
+    h2: 'Not just yes or no: five possible answers.',
+    lede: 'A question put to the studies doesn’t always have a yes or a no. Each verdict says what the evidence lets you claim, and no more. A person records it after reading the evidence profile.',
+    groups: [
+      {
+        label: 'The evidence points one way',
+        items: [
+          { name: 'SUPPORTED', title: 'The evidence says yes.', p: 'The profile is convincing, and whoever signs writes down why.' },
+          { name: 'CONTRADICTED', title: 'The evidence says the opposite.', p: 'The profile is convincing in the other direction.' },
+        ],
+      },
+      {
+        label: 'The evidence doesn’t decide, and that can happen in three ways',
+        items: [
+          { name: 'CONTESTED_IN_LITERATURE', title: 'The studies disagree.', p: 'The studies speak and contradict each other in a way that can’t be reconciled.' },
+          { name: 'UNANSWERED_IN_LITERATURE', title: 'The studies don’t settle it.', p: 'They were read, and they aren’t enough to decide.' },
+          { name: 'NEVER_ASKED', title: 'Nobody has studied it.', p: 'A person checked that it isn’t just a gap in the search.' },
+        ],
+      },
     ],
-    fine: 'Questions are numbered and frozen. Changing the list is a dated version bump, enforced by a digest of every question’s id, text and kind.',
+    bridge: 'These three look the same from outside, and they aren’t. Treating “the studies disagree” as “nothing found” is the mistake Claimstone exists to avoid.',
+    fine: 'The signature is tied to the evidence the person saw: if the evidence changes later, the verdict is marked out of date. Questions are numbered and frozen, and changing the list is a dated version change.',
+    unsigned: 'No verdict has been signed yet. These are the states the project recognises.',
   },
   status: {
     eyebrow: 'Where it stands',
