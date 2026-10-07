@@ -2,6 +2,14 @@
  * English is the source dictionary. `it.ts` is typed as `Dictionary`, so a key missing from
  * (or extra in) the Italian file fails `npm run check`.
  */
+export interface StageItem {
+  title: string;
+  name: string;
+  p: string;
+  writes: string;
+  extra?: { badge: string; text: string };
+}
+
 export const en = {
   meta: {
     siteName: 'Claimstone',
@@ -75,19 +83,27 @@ export const en = {
     closing: 'And it isn’t tied to one field. Topics, questions and kinds of source are input files; nothing in the engine is specific to finance or biology.',
   },
   stages: {
-    eyebrow: 'The pipeline',
-    h2: 'Six stages, one append-only file between each.',
-    lede: 'Nothing holds state in memory. A crash is resumable and every figure is greppable.',
+    eyebrow: 'How it works',
+    h2: 'From your questions to an answer you can check, in six steps.',
+    lede: 'You provide the topics and the questions. Claimstone does the rest, one step at a time, and leaves a file at every step that you can open and check.',
+    inputLabel: 'You provide',
+    input: 'the topics, a fixed list of numbered questions, and the kinds of source you accept. They are three plain files.',
+    outputLabel: 'You get',
+    output: 'an evidence profile for each question. A person reads it, decides, and signs.',
+    writesLabel: 'writes',
     items: [
-      { name: 'discover', p: 'Two independent channels, keyword search and citations, find the candidates.', writes: 'candidates.jsonl' },
-      { name: 'acquire', p: 'Obtains the best legal copy and records every attempt and why it failed.', writes: 'acquisitions.jsonl · raw/' },
-      { name: 'normalize', p: 'PDFs and HTML become one document shape, then chunks.', writes: 'documents.jsonl · chunks.jsonl' },
-      { name: 'extract', p: 'A model proposes claims. A gate verifies each one against its quote.', writes: 'claims.jsonl · rejections.jsonl' },
-      { name: 'review', p: 'A different model reads each claim against its whole passage.', writes: 'reviews.jsonl' },
-      { name: 'synthesize', p: 'An evidence profile per question. No model, no network, no statistics.', writes: 'profiles.jsonl' },
-    ],
-    signName: 'adjudicate',
-    sign: 'A person records the verdict and signs it. If the evidence later changes, the signature is marked stale instead of quietly kept.',
+      { title: 'Finds', name: 'discover', p: 'Searches for papers on your topics in two independent ways: by keywords and by following citations. You get the list of candidates, each marked with what kind of source it is, such as a peer-reviewed paper or a blog post.', writes: 'candidates.jsonl' },
+      {
+        title: 'Obtains', name: 'acquire',
+        p: 'Gets the best legal copy of each paper, preferring open access, and never goes through pirate libraries. It records every attempt and why it failed, so you know how much it could really read.',
+        writes: 'acquisitions.jsonl · raw/',
+        extra: { badge: 'In development', text: 'Papers behind a paywall can’t be fetched. You will be able to add a copy you got yourself, from a library or by purchase. It goes through the same identity and full-text checks, and is reported on its own line, so it never quietly inflates how much was read.' },
+      },
+      { title: 'Prepares', name: 'normalize', p: 'Turns PDFs and web pages into clean text and splits it into passages, so every quote can be traced back to an exact place.', writes: 'documents.jsonl · chunks.jsonl' },
+      { title: 'Extracts', name: 'extract', p: 'A model proposes the claims it finds in each paper. The code then checks every claim against its quote. The ones that fail are rejected and listed.', writes: 'claims.jsonl · rejections.jsonl' },
+      { title: 'Rechecks', name: 'review', p: 'A second, different model rereads each claim in its whole passage, to check it still holds in context.', writes: 'reviews.jsonl' },
+      { title: 'Summarizes', name: 'synthesize', p: 'For each question it assembles an evidence profile from what was accepted: the results, how many sources point each way, what was rejected and how much was read. No model, no network, no statistics at this step: it only organizes and counts.', writes: 'profiles.jsonl' },
+    ] as StageItem[],
   },
   verdicts: {
     eyebrow: 'The verdict contract',
