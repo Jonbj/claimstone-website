@@ -1,7 +1,8 @@
 ---
-import { getDictionary, type Locale } from '../i18n';
+import { getDictionary, pagePath, type Locale } from '../i18n';
 interface Props { locale: Locale }
-const s = getDictionary(Astro.props.locale).status;
+const { locale } = Astro.props;
+const s = getDictionary(locale).status;
 ---
 <section class="band" id="status">
   <div class="wrap">
@@ -10,20 +11,23 @@ const s = getDictionary(Astro.props.locale).status;
       <h2>{s.h2}</h2>
       <p>{s.lede}</p>
     </div>
-    <dl class="stats">
-      {s.items.map((i) => (
-        <div class:list={['stat', { zero: i.zero }]}><dt>{i.value}</dt><dd>{i.label}</dd></div>
+    <div class="cols">
+      {s.columns.map((c) => (
+        <div class="col">
+          <h3>{c.label}</h3>
+          <p>{c.p}</p>
+        </div>
       ))}
-    </dl>
+    </div>
+    <p class="cta"><a class="more-link" href={pagePath(locale, 'community')}>{s.cta}</a></p>
   </div>
 </section>
 
 <style>
-  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 0; }
-  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 4px; align-content: start; }
-  dt { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; order: 0; }
-  dd { margin: 0; color: var(--muted); font-size: 14px; order: 1; }
-  .zero dt { color: var(--accent-ink); }
-  @media (max-width: 960px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 620px) { .stats { grid-template-columns: minmax(0, 1fr); } }
+  .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .col { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 10px; align-content: start; }
+  h3 { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); }
+  .col p { color: var(--muted); }
+  .cta { margin-top: 24px; }
+  @media (max-width: 960px) { .cols { grid-template-columns: minmax(0, 1fr); } }
 </style>

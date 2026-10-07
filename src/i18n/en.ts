@@ -132,14 +132,23 @@ export const en = {
   },
   status: {
     eyebrow: 'Where it stands',
-    h2: 'One round has run end to end. No verdict exists yet.',
-    lede: 'All six stages are implemented. The first round ran on literature deposited in PubMed Central, and it cleared its floor.',
-    items: [
-      { value: '37 / 40', label: 'sources confirmed, against a floor of 0.80' },
-      { value: '1,721', label: 'accepted annotations' },
-      { value: '271', label: 'rejections, kept in the ledger' },
-      { value: '0', label: 'verdicts. The only command that writes one takes a person’s signature.', zero: true },
+    h2: 'Early, and open about it.',
+    lede: 'Claimstone works from start to finish, but it is young. Here is what has been done and what hasn’t.',
+    columns: [
+      {
+        label: 'Works today',
+        p: 'All six steps run, from the search to the evidence profile. One full round was run on open-access articles from PubMed Central about screen time: 37 of the 40 papers found were obtained, above the 80% threshold set in advance. It produced 1,721 accepted annotations and 271 rejected ones, all listed.',
+      },
+      {
+        label: 'Not yet',
+        p: 'No verdict has been signed. The first profile is ready for a person to read; the other seven are provisional. Two other collections of papers stayed below their threshold, so Claimstone correctly produced nothing for them. The portal for following the work is read-only for now.',
+      },
+      {
+        label: 'Where help is wanted',
+        p: 'Running it on a field you know, questioning a design decision with a better measurement, and reporting what breaks.',
+      },
     ],
+    cta: 'See how to take part →',
   },
   join: {
     eyebrow: 'Join in',

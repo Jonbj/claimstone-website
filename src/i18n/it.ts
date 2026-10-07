@@ -122,14 +122,23 @@ export const it: Dictionary = {
   },
   status: {
     eyebrow: 'A che punto siamo',
-    h2: 'Un round è stato eseguito da capo a fondo. Non esiste ancora alcun verdetto.',
-    lede: 'Tutte e sei le fasi sono implementate. Il primo round ha usato articoli depositati in PubMed Central e ha superato la soglia.',
-    items: [
-      { value: '37 / 40', label: 'fonti confermate, rispetto a una soglia di 0,80' },
-      { value: '1.721', label: 'annotazioni accettate' },
-      { value: '271', label: 'rifiuti, conservati nel registro' },
-      { value: '0', label: 'verdetti. L’unico comando che ne scrive uno richiede la firma di una persona.', zero: true },
+    h2: 'Siamo all’inizio, e lo diciamo apertamente.',
+    lede: 'Claimstone funziona dall’inizio alla fine, ma è giovane. Ecco cosa è stato fatto e cosa no.',
+    columns: [
+      {
+        label: 'Funziona già',
+        p: 'Tutti e sei i passi funzionano, dalla ricerca al profilo di evidenza. Un round completo è stato eseguito su articoli ad accesso aperto di PubMed Central sul tempo di schermo: 37 dei 40 articoli trovati sono stati ottenuti, sopra la soglia dell’80% fissata in anticipo. Ha prodotto 1.721 annotazioni accettate e 271 rifiutate, tutte in elenco.',
+      },
+      {
+        label: 'Non ancora',
+        p: 'Nessun verdetto è stato firmato. Il primo profilo è pronto per essere letto da una persona; gli altri sette sono provvisori. Altre due raccolte di articoli sono rimaste sotto la soglia, quindi Claimstone non ha prodotto nulla, come deve. Il portale per seguire il lavoro per ora è in sola lettura.',
+      },
+      {
+        label: 'Dove serve aiuto',
+        p: 'Usarlo su un campo che conosci, mettere in discussione una decisione con una misura migliore, segnalare cosa non funziona.',
+      },
     ],
+    cta: 'Scopri come partecipare →',
   },
   join: {
     eyebrow: 'Partecipa',
