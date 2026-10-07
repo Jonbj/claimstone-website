@@ -26,6 +26,9 @@
   --on-accent: #0a0c0f;
   --danger-on-dark: #ff8a7a;
 
+  --logo-stone: #1d2227;
+  --logo-stone-on-dark: #3d4853;
+
   --wrap: 1120px;
   --gutter: 20px;
   color-scheme: light;
@@ -39,6 +42,7 @@
     --line: #252c33;
     --reject: #ff8a7a;
     --accent-ink: var(--accent);
+    --logo-stone: #3d4853;
     color-scheme: dark;
   }
 }

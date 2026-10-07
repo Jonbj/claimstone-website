@@ -1,0 +1,17 @@
+---
+// The mark, inline so it can follow the theme. Geometry is copied from brand/mark.mjs; if one changes, change both
+// (npm run brand regenerates the files, this component is the only hand-copied place).
+interface Props { size?: number; onDark?: boolean }
+const { size = 28, onDark = false } = Astro.props;
+---
+<svg class={onDark ? 'mark dark' : 'mark'} width={size} height={size} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <path d="M11 26 L37 11 L56 22 L53 47 L19 54 L8 41 Z" class="stone" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M16 43 L47 25" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M25 49 L38 41.5" stroke="var(--accent)" stroke-opacity=".55" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
+
+<style>
+  .mark { display: block; flex: none; --stone: var(--logo-stone); }
+  .mark.dark { --stone: var(--logo-stone-on-dark); }
+  .stone { fill: var(--stone); stroke: var(--stone); }
+</style>

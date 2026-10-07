@@ -20,7 +20,8 @@ npm run verify     # type check, build, then check links and language twins
 | `src/components/` | Header, footer, language switch, and the home sections. |
 | `src/layouts/Base.astro` | `<head>`: title, canonical, hreflang, Open Graph, JSON-LD. |
 | `src/styles/global.css` | Design tokens and shared styles. Amber is the one accent. |
-| `public/` | Favicon, `og.png` (made by `scripts/make_og.py`), `robots.txt`. |
+| `brand/` | The logo: one geometry file, generated vector and PNG files, usage rules. `npm run brand` regenerates them and the icons in `public/`. |
+| `public/` | Icons, `og.png` and the web manifest (all generated), `robots.txt`. |
 
 ## Adding a page
 

@@ -1,5 +1,6 @@
 ---
 import LangSwitch from './LangSwitch.astro';
+import Logo from './Logo.astro';
 import { links } from '../config';
 import { getDictionary, pagePath, type Locale } from '../i18n';
 
@@ -15,7 +16,7 @@ const nav = [
 ---
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href={pagePath(locale)} aria-label="Claimstone"><i aria-hidden="true"></i>Claimstone</a>
+    <a class="brand" href={pagePath(locale)} aria-label="Claimstone"><Logo size={30} onDark />Claimstone</a>
 
     <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav" data-burger>
       <span class="sr">{t.a11y.menu}</span>
@@ -50,7 +51,6 @@ const nav = [
   .top { background: var(--hero-bg); color: var(--hero-fg); }
   .bar { display: flex; align-items: center; gap: 28px; padding-block: 22px; }
   .brand { font-weight: 700; font-size: 19px; letter-spacing: -0.02em; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
-  .brand i { width: 14px; height: 14px; background: var(--accent); display: inline-block; border-radius: 3px; transform: rotate(45deg); }
   .panel { display: flex; align-items: center; gap: 28px; flex: 1; }
   .links { display: flex; gap: 22px; font-size: 14px; }
   .links a { color: var(--hero-muted); text-decoration: none; padding-block: 4px; border-bottom: 1px solid transparent; }

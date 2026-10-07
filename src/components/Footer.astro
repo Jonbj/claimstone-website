@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 import { links } from '../config';
 import { getDictionary, pagePath, type Locale } from '../i18n';
 
@@ -9,7 +10,7 @@ const t = getDictionary(locale);
 <footer class="foot">
   <div class="wrap row">
     <div class="who">
-      <strong>Claimstone</strong>
+      <strong class="name"><Logo size={22} />Claimstone</strong>
       <span>{t.footer.licence}</span>
       <p>{t.footer.note}</p>
     </div>
@@ -30,6 +31,7 @@ const t = getDictionary(locale);
   .row { display: flex; gap: 24px 48px; flex-wrap: wrap; justify-content: space-between; }
   .who { display: grid; gap: 4px; max-width: 46ch; }
   .who strong { color: var(--fg); font-size: 16px; }
+  .name { display: inline-flex; align-items: center; gap: 8px; }
   .who p { margin-top: 8px; }
   nav { display: flex; gap: 8px 22px; flex-wrap: wrap; align-content: start; }
   a { text-decoration: none; }
