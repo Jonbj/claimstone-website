@@ -12,7 +12,7 @@ const hrefs: Record<string, string> = links;
 ---
 <Base locale={locale} path="community" title={p.title} description={p.description}>
   <PageHero eyebrow={p.eyebrow} title={p.h1} lede={p.lede} />
-  <Join locale={locale} />
+  <Join locale={locale} showRule={false} />
   <section class="band">
     <div class="wrap">
       <div class="head"><h2>{p.ruleH2}</h2></div>

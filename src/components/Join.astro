@@ -1,8 +1,8 @@
 ---
 import { links } from '../config';
-import { getDictionary, type Locale } from '../i18n';
-interface Props { locale: Locale }
-const { locale } = Astro.props;
+import { getDictionary, pagePath, type Locale } from '../i18n';
+interface Props { locale: Locale; showRule?: boolean }
+const { locale, showRule = true } = Astro.props;
 const j = getDictionary(locale).join;
 const hrefs: Record<string, string> = {
   guide: locale === 'it' ? links.guideIt : links.guide,
@@ -20,6 +20,7 @@ const hrefs: Record<string, string> = {
     <div class="ways">
       {j.items.map((i) => (
         <div class="way">
+          <span class="when">{i.when}</span>
           <h3>{i.h}</h3>
           <p>{i.p}</p>
           <a class="more-link" href={hrefs[i.href]}>{i.cta}</a>
@@ -30,15 +31,20 @@ const hrefs: Record<string, string> = {
       <a class="btn btn-primary" href={links.repo}>{j.star}</a>
       <a class="btn btn-ghost" href={links.contributing}>{j.contribute}</a>
     </div>
+    {showRule && (
+      <p class="rule">{j.rule} <a href={pagePath(locale, 'community')}>{j.ruleLink}</a></p>
+    )}
   </div>
 </section>
 
 <style>
   .ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .way { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; display: grid; gap: 10px; align-content: start; }
-  h3 { font-size: 19px; font-weight: 600; }
+  .when { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); }
+  h3 { font-size: 20px; font-weight: 600; }
   .way p { color: var(--muted); font-size: 15px; }
   .closing { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  @media (max-width: 960px) { .ways { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 620px) { .ways { grid-template-columns: minmax(0, 1fr); } }
+  .rule { margin-top: 20px; color: var(--muted); font-size: 14px; }
+  .rule a { color: var(--accent-ink); }
+  @media (max-width: 960px) { .ways { grid-template-columns: minmax(0, 1fr); } }
 </style>
