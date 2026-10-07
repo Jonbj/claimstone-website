@@ -10,21 +10,27 @@ const w = getDictionary(Astro.props.locale).why;
       <h2>{w.h2}</h2>
       <p>{w.lede}</p>
     </div>
-    <div class="grid">
+    <ul class="rows">
       {w.items.map((i) => (
-        <article>
-          <h3>{i.h}</h3>
-          <p set:html={i.p} />
-        </article>
+        <li>
+          <p class="problem">{i.problem}</p>
+          <p class="answer">{i.answer}</p>
+        </li>
       ))}
-    </div>
+    </ul>
+    <p class="closing">{w.closing}</p>
   </div>
 </section>
 
 <style>
-  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
-  article { background: var(--surface); padding: 28px; display: grid; gap: 10px; align-content: start; }
-  h3 { font-size: 20px; font-weight: 600; }
-  article p { color: var(--muted); }
-  @media (max-width: 620px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+  .rows { list-style: none; padding: 0; display: grid; gap: 16px; }
+  li { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .problem { padding: 28px; font-size: 19px; line-height: 1.4; font-weight: 600; letter-spacing: -0.01em; border-right: 1px solid var(--line); border-left: 4px solid var(--accent); }
+  .answer { padding: 28px; color: var(--muted); }
+  .closing { margin-top: 28px; color: var(--muted); max-width: 70ch; }
+  @media (max-width: 760px) {
+    li { grid-template-columns: minmax(0, 1fr); }
+    .problem { border-right: 0; border-bottom: 1px solid var(--line); padding: 22px; }
+    .answer { padding: 22px; }
+  }
 </style>

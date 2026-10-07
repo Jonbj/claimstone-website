@@ -3,9 +3,9 @@ import type { Dictionary } from './en';
 export const it: Dictionary = {
   meta: {
     siteName: 'Claimstone',
-    tagline: 'Legge la letteratura e non dice più di quanto c’è scritto.',
+    tagline: 'Legge gli studi scientifici e non dice più di quanto c’è scritto.',
     description:
-      'Claimstone cerca e legge la letteratura sui tuoi argomenti. Per ogni domanda restituisce le prove, ciascuna con la citazione esatta del testo, e quanto ha letto davvero. Open source, Apache-2.0.',
+      'Claimstone cerca e legge gli studi scientifici sui tuoi argomenti. Per ogni domanda restituisce le prove, ciascuna con la citazione esatta del testo, e quanto ha letto davvero. Open source, Apache-2.0.',
   },
   a11y: { skip: 'Vai al contenuto', menu: 'Menu', mainNav: 'Principale', footerNav: 'Piè di pagina', language: 'Lingua' },
   nav: {
@@ -26,13 +26,13 @@ export const it: Dictionary = {
   home: {
     title: 'Claimstone',
     eyebrow: 'Open source · Apache-2.0',
-    h1: 'Legge la letteratura e <em>non dice più di quanto c’è scritto</em>.',
+    h1: 'Legge gli studi scientifici e <em>non dice più di quanto c’è scritto</em>.',
     lede: 'Gli dai degli argomenti e un elenco fisso di domande. Claimstone cerca le pubblicazioni, ottiene legalmente quelle che può e le legge una per una. Per ogni domanda ti restituisce le prove, <strong>ciascuna con la citazione esatta dal testo</strong>, e ti dice quanto di ciò che ha trovato è riuscito a leggere.',
     ctaPrimary: 'Dai una stella su GitHub',
     ctaSecondary: 'Leggi la guida',
     facts: ['ogni affermazione ha la sua citazione', 'nessuna media tra gli studi', 'il verdetto lo firma una persona'],
     card: {
-      label: 'Esempio illustrativo del gate delle citazioni',
+      label: 'Esempio illustrativo del controllo delle citazioni',
       accepted: 'accettata',
       rejected: 'rifiutata → registro',
       chunk: 'chunk c-0412',
@@ -49,27 +49,28 @@ export const it: Dictionary = {
     },
   },
   why: {
-    eyebrow: 'Perché funziona così',
-    h2: 'Costruito attorno a un errore che non vuole commettere.',
-    lede: 'Riportare «non abbiamo trovato prove» come «non c’è alcun effetto». Tutto ciò che è insolito nel progetto discende da qui.',
+    eyebrow: 'A cosa serve',
+    h2: 'Interroga gli studi. Controlla la risposta.',
+    lede: 'Quando si leggono gli studi su un argomento ci sono due errori da evitare: affermare più di quanto dicono le fonti, e concludere che un effetto non esiste solo perché non si sono trovate prove. Claimstone serve quando non puoi permetterti né l’uno né l’altro.',
     items: [
       {
-        h: 'Una claim senza citazione verificata viene scartata.',
-        p: 'La citazione è verificata nel codice come sottostringa esatta del testo della fonte, e ogni numero della claim deve comparirvi. Ciò che fallisce va in un registro dei rifiuti, che è il denominatore: non si legge il tasso di accettazione senza vedere cosa è stato rifiutato.',
+        problem: 'Sul tuo argomento ci sono centinaia di articoli e non hai il tempo di leggerli.',
+        answer: 'Trova i candidati per due strade indipendenti, ricerca per parole chiave e citazioni, ottiene la copia legale di ogni articolo che può e li legge uno per uno.',
       },
       {
-        h: 'Un corpus che non ha ottenuto ciò che ha trovato non produce nulla.',
-        p: 'Sotto la soglia dichiarata, un round riporta <code>INSUFFICIENT_ACQUISITION</code> e non scrive conclusioni. Non esiste un flag per aggirarlo. Un corpus letto al 42% che si dichiara completo è peggio di nessun corpus.',
+        problem: 'I riassunti fatti con l’IA sembrano sicuri di sé, ma non sai cosa dice davvero l’articolo.',
+        answer: 'Ogni affermazione porta una citazione copiata parola per parola dall’articolo. Il codice verifica che la citazione ci sia davvero e che ogni numero dell’affermazione vi compaia. Ciò che non supera il controllo è scartato, e l’elenco degli scarti resta visibile.',
       },
       {
-        h: 'Nessun verdetto è automatico.',
-        p: 'Il motore produce un profilo di evidenza: i risultati, il conteggio delle direzioni etichettato come conteggio, la copertura, i rifiuti e ciò che un secondo lettore non ha fatto passare. Una persona lo legge e firma sull’hash di ciò che ha visto.',
+        problem: '«Non ho trovato nulla» può voler dire che non c’è nulla, oppure che gli articoli non si sono potuti ottenere.',
+        answer: 'Misura quanta parte di ciò che ha trovato è riuscito a ottenere, rispetto a una soglia dichiarata in anticipo. Sotto la soglia si ferma e non trae conclusioni. E tiene separati tre casi che si confondono facilmente: le fonti non rispondono, le fonti dicono il contrario, le fonti sono in disaccordo tra loro.',
       },
       {
-        h: 'Ogni cifra nomina lo strumento che l’ha prodotta.',
-        p: 'Parser, gate e soglie hanno un numero di versione. Uno strumento rifiuta di passare se una versione cambia senza essere registrata, e il registro delle decisioni conserva la misura che ha deciso ogni scelta.',
+        problem: 'Ti serve una risposta che puoi difendere, non una scatola nera.',
+        answer: 'Per ogni domanda prepara un profilo di evidenza: ogni risultato, quante fonti vanno in una direzione e quante nell’altra, cosa è stato scartato e quanto è stato letto. Una persona lo legge e firma. Ogni passaggio scrive file di testo semplici che puoi aprire e interrogare.',
       },
     ],
+    closing: 'E non è legato a un settore. Argomenti, domande e tipi di fonti sono file di input: nel motore non c’è nulla di specifico della finanza o della biologia.',
   },
   stages: {
     eyebrow: 'La pipeline',
@@ -79,8 +80,8 @@ export const it: Dictionary = {
       { name: 'discover', p: 'Due canali indipendenti, ricerca per parole chiave e citazioni, trovano i candidati.', writes: 'candidates.jsonl' },
       { name: 'acquire', p: 'Ottiene la migliore copia legale e registra ogni tentativo e perché è fallito.', writes: 'acquisitions.jsonl · raw/' },
       { name: 'normalize', p: 'PDF e HTML diventano un’unica forma di documento, poi chunk.', writes: 'documents.jsonl · chunks.jsonl' },
-      { name: 'extract', p: 'Un modello propone le claim. Un gate verifica ciascuna contro la sua citazione.', writes: 'claims.jsonl · rejections.jsonl' },
-      { name: 'review', p: 'Un modello diverso legge ogni claim contro il suo intero passaggio.', writes: 'reviews.jsonl' },
+      { name: 'extract', p: 'Un modello propone le affermazioni. Un controllo verifica ciascuna contro la sua citazione.', writes: 'claims.jsonl · rejections.jsonl' },
+      { name: 'review', p: 'Un modello diverso rilegge ogni affermazione nel suo passaggio completo.', writes: 'reviews.jsonl' },
       { name: 'synthesize', p: 'Un profilo di evidenza per domanda. Nessun modello, nessuna rete, nessuna statistica.', writes: 'profiles.jsonl' },
     ],
     signName: 'adjudicate',
@@ -89,7 +90,7 @@ export const it: Dictionary = {
   verdicts: {
     eyebrow: 'Il contratto dei verdetti',
     h2: 'Cinque stati. Nessuno si fonde in un altro.',
-    lede: '«Non abbiamo trovato prove» e «non c’è alcun effetto» sono frasi diverse, e lo è anche «la letteratura è in disaccordo».',
+    lede: '«Non abbiamo trovato prove» e «non c’è alcun effetto» sono frasi diverse, e lo è anche «gli studi sono in disaccordo».',
     items: [
       { name: 'SUPPORTED', p: 'Le prove vanno in una direzione, con la copertura per affermarlo.' },
       { name: 'CONTRADICTED', p: 'Le prove vanno nella direzione opposta.' },
@@ -102,7 +103,7 @@ export const it: Dictionary = {
   status: {
     eyebrow: 'A che punto siamo',
     h2: 'Un round è stato eseguito da capo a fondo. Non esiste ancora alcun verdetto.',
-    lede: 'Tutte e sei le fasi sono implementate. Il primo round ha usato letteratura depositata in PubMed Central e ha superato la soglia.',
+    lede: 'Tutte e sei le fasi sono implementate. Il primo round ha usato articoli depositati in PubMed Central e ha superato la soglia.',
     items: [
       { value: '37 / 40', label: 'fonti confermate, rispetto a una soglia di 0,80' },
       { value: '1.721', label: 'annotazioni accettate' },
@@ -115,22 +116,22 @@ export const it: Dictionary = {
     h2: 'Porta un campo, un dubbio o una lettura.',
     lede: 'Il motore non contiene conoscenza di dominio. Argomenti, domande e classi di fonti sono dati in ingresso, quindi un progetto in un campo diverso ci sta senza toccare il pacchetto.',
     items: [
-      { h: 'Usalo su un nuovo campo', p: 'Scrivi i tre file di input per un argomento che conosci, con letteratura pubblica, e guarda cosa rifiuta il gate.', cta: 'Segui la guida →', href: 'guide' },
+      { h: 'Usalo su un nuovo campo', p: 'Scrivi i tre file di input per un argomento che conosci, con articoli scientifici pubblici, e guarda cosa rifiuta il controllo.', cta: 'Segui la guida →', href: 'guide' },
       { h: 'Metti in discussione una decisione', p: 'Ogni decisione di progetto è registrata con la misura che l’ha decisa. Leggi la voce, poi porta una misura migliore.', cta: 'Leggi le decisioni →', href: 'decisions' },
-      { h: 'Segnala cosa non funziona', p: 'Un fallimento ingoiato gonfia il tasso di acquisizione. Se ne trovi uno, o un gate che lascia passare qualcosa, apri una issue.', cta: 'Apri una issue →', href: 'issues' },
+      { h: 'Segnala cosa non funziona', p: 'Un fallimento ingoiato gonfia il tasso di acquisizione. Se ne trovi uno, o un controllo che lascia passare qualcosa, apri una issue.', cta: 'Apri una issue →', href: 'issues' },
     ],
     star: 'Dai una stella su GitHub',
     contribute: 'Come contribuire',
   },
   howPage: {
     title: 'Come funziona',
-    description: 'Le sei fasi, il gate delle citazioni, la soglia di acquisizione e i cinque stati di verdetto che compongono Claimstone.',
+    description: 'Le sei fasi, il controllo delle citazioni, la soglia di acquisizione e i cinque stati di verdetto che compongono Claimstone.',
     eyebrow: 'Come funziona',
     h1: 'Da un elenco di domande a un profilo di evidenza.',
     lede: 'Claimstone è fatto di sei fasi che comunicano tramite file append-only, e di una persona che firma alla fine.',
     invariantsH2: 'Regole che il motore non piega',
     invariants: [
-      { h: 'Nessuna claim senza citazione verificata', p: 'La citazione deve essere una sottostringa esatta del suo chunk, e ogni numero e disuguaglianza della claim deve comparirvi. Ciò che fallisce va nel registro dei rifiuti.' },
+      { h: 'Nessuna affermazione senza citazione verificata', p: 'La citazione deve essere una sottostringa esatta del suo chunk, e ogni numero e disuguaglianza dell’affermazione deve comparirvi. Ciò che fallisce va nel registro dei rifiuti.' },
       { h: 'Cinque stati di verdetto', p: 'Nessuno si fonde in un altro. Una domanda di tipo operational non riceve alcun verdetto, invece di un sesto stato.' },
       { h: 'La soglia di acquisizione governa i verdetti', p: 'Un round che ha ottenuto meno della sua soglia di ciò che ha trovato è INSUFFICIENT_ACQUISITION. Non c’è alcun override.' },
       { h: 'Il motore non contiene conoscenza di dominio', p: 'Argomenti, domande e classi di fonti sono dati in ingresso sotto projects/.' },
@@ -151,7 +152,7 @@ export const it: Dictionary = {
       { h: 'Decisioni di progetto', p: 'Decisioni datate, ciascuna con la misura che l’ha decisa. Leggi la voce prima di discutere la scelta.', href: 'decisions' },
       { h: 'Contratti dei dati', p: 'La forma esatta di ogni file che le fasi si scambiano, e il contratto dei verdetti.', href: 'contracts' },
       { h: 'Passaggio di consegne', p: 'Cosa è in esecuzione ora, cosa è in sospeso e quali decisioni spettano a una persona e non al motore.', href: 'handoff' },
-      { h: 'Esempio completo', p: 'Un’istanza di progetto costruita da letteratura pubblica: argomenti, domande e fonti.', href: 'example' },
+      { h: 'Esempio completo', p: 'Un’istanza di progetto costruita da articoli scientifici pubblici: argomenti, domande e fonti.', href: 'example' },
       { h: 'Mappa dei documenti', p: 'Quale file risponde a quale domanda.', href: 'docsMap' },
     ],
     open: 'Apri su GitHub →',
@@ -164,11 +165,11 @@ export const it: Dictionary = {
     lede: 'I contributi sono benvenuti, e poche regole non sono negoziabili.',
     waysH2: 'Modi di partecipare',
     ruleH2: 'L’unica regola non negoziabile',
-    rule: 'Nessuna claim entra nella base di evidenza senza una citazione testuale verificata, nel codice, come sottostringa esatta del testo della fonte a cui è attribuita. Una pull request che indebolisce, aggira o rende opzionale questo gate sarà rifiutata, per quanto comodo sembri il risultato.',
+    rule: 'Nessuna affermazione entra nella base di evidenza senza una citazione testuale verificata, nel codice, come sottostringa esatta del testo della fonte a cui è attribuita. Una pull request che indebolisce, aggira o rende opzionale questo controllo sarà rifiutata, per quanto comodo sembri il risultato.',
     ruleNote: 'L’elenco completo delle regole è nella guida per contribuire.',
     channelsH2: 'Dove parlarne',
     channels: [
-      { h: 'Issues', p: 'Bug, gate che lasciano passare qualcosa e proposte.', href: 'issues', cta: 'Apri una issue →' },
+      { h: 'Issues', p: 'Bug, controlli che lasciano passare qualcosa e proposte.', href: 'issues', cta: 'Apri una issue →' },
       { h: 'Repository', p: 'Leggi il codice, fai un fork, invia una pull request.', href: 'repo', cta: 'Apri il repository →' },
       { h: 'Guida per contribuire', p: 'Le regole, e come aggiungere una domanda, una classe di fonti o un progetto.', href: 'contributing', cta: 'Leggi la guida →' },
     ],

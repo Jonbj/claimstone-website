@@ -51,27 +51,28 @@ export const en = {
     },
   },
   why: {
-    eyebrow: 'Why it works this way',
-    h2: 'Built around one failure it will not commit.',
-    lede: 'Reporting “we found no evidence” as “there is no effect.” Everything unusual about the design follows from that.',
+    eyebrow: 'What it is for',
+    h2: 'Ask the literature. Check the answer.',
+    lede: 'When you read the literature there are two mistakes to avoid: claiming more than the sources say, and concluding that an effect doesn’t exist just because no evidence turned up. Claimstone is for when you can’t afford either.',
     items: [
       {
-        h: 'A claim without a verified quote is discarded.',
-        p: 'The quote is checked in code to be an exact substring of the source text, and every number in the claim must appear in it. What fails goes to a rejection ledger, which is the denominator: you cannot read the acceptance rate without seeing what was rejected.',
+        problem: 'There are hundreds of papers on your topic and no time to read them.',
+        answer: 'It finds candidates through two independent routes, keyword search and citations, gets the legal copy of every paper it can, and reads them one by one.',
       },
       {
-        h: 'A corpus that did not obtain what it found produces nothing.',
-        p: 'Below its declared floor, a round reports <code>INSUFFICIENT_ACQUISITION</code> and writes no conclusions. There is no flag to override it. A corpus read at 42% that certifies itself complete is worse than none.',
+        problem: 'AI summaries sound sure of themselves, but you can’t tell what the paper actually says.',
+        answer: 'Every claim comes with a quote copied word for word from the paper. The code checks that the quote is really there and that every number in the claim appears in it. What fails is thrown out, and the list of rejections stays visible.',
       },
       {
-        h: 'No verdict is automatic.',
-        p: 'The engine produces an evidence profile: the results, the direction count labelled as a count, the coverage, the rejections, and what a second reader refused to pass. A person reads it and signs against the hash of what they were shown.',
+        problem: '“I found nothing” could mean there is nothing, or that the papers couldn’t be obtained.',
+        answer: 'It measures how much of what it found it actually obtained, against a threshold declared in advance. Below it, it stops and draws no conclusions. And it keeps three easily confused cases apart: the sources don’t answer, the sources say the opposite, the sources disagree with each other.',
       },
       {
-        h: 'Every figure names the instrument that made it.',
-        p: 'Parsers, gates and thresholds carry version numbers. A tool refuses to pass when one changes without being recorded, and the design record holds the measurement that decided each choice.',
+        problem: 'You need an answer you can defend, not a black box.',
+        answer: 'For each question it prepares an evidence profile: every result, how many sources point each way, what was rejected and how much was read. A person reads it and signs. Every step writes plain text files you can open and search.',
       },
     ],
+    closing: 'And it isn’t tied to one field. Topics, questions and kinds of source are input files; nothing in the engine is specific to finance or biology.',
   },
   stages: {
     eyebrow: 'The pipeline',
