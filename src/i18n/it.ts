@@ -3,9 +3,9 @@ import type { Dictionary } from './en';
 export const it: Dictionary = {
   meta: {
     siteName: 'Claimstone',
-    tagline: 'Una macchina di lettura che rifiuta di esagerare ciò che ha letto.',
+    tagline: 'Legge la letteratura e non dice più di quanto c’è scritto.',
     description:
-      'Claimstone trova e legge la letteratura sui tuoi argomenti e restituisce, per ogni domanda, le prove legate a citazioni testuali, con la copertura su cui poggiano. Open source, Apache-2.0.',
+      'Claimstone cerca e legge la letteratura sui tuoi argomenti. Per ogni domanda restituisce le prove, ciascuna con la citazione esatta del testo, e quanto ha letto davvero. Open source, Apache-2.0.',
   },
   a11y: { skip: 'Vai al contenuto', menu: 'Menu', mainNav: 'Principale', footerNav: 'Piè di pagina', language: 'Lingua' },
   nav: {
@@ -26,11 +26,11 @@ export const it: Dictionary = {
   home: {
     title: 'Claimstone',
     eyebrow: 'Open source · Apache-2.0',
-    h1: 'Una macchina di lettura che <em>rifiuta di esagerare</em> ciò che ha letto.',
-    lede: 'Dai argomenti e un elenco fisso di domande. Trova la letteratura, ottiene legalmente ciò che può e legge ogni fonte. Per ogni domanda ricevi le prove <strong>legate a citazioni testuali</strong>, con la copertura su cui poggiano.',
-    ctaPrimary: 'Metti una stella su GitHub',
+    h1: 'Legge la letteratura e <em>non dice più di quanto c’è scritto</em>.',
+    lede: 'Gli dai degli argomenti e un elenco fisso di domande. Claimstone cerca le pubblicazioni, ottiene legalmente quelle che può e le legge una per una. Per ogni domanda ti restituisce le prove, <strong>ciascuna con la citazione esatta dal testo</strong>, e ti dice quanto di ciò che ha trovato è riuscito a leggere.',
+    ctaPrimary: 'Dai una stella su GitHub',
     ctaSecondary: 'Leggi la guida',
-    facts: ['ogni claim ha una citazione', 'nessun pooling', 'firma una persona'],
+    facts: ['ogni affermazione ha la sua citazione', 'nessuna media tra gli studi', 'il verdetto lo firma una persona'],
     card: {
       label: 'Esempio illustrativo del gate delle citazioni',
       accepted: 'accettata',
@@ -119,7 +119,7 @@ export const it: Dictionary = {
       { h: 'Metti in discussione una decisione', p: 'Ogni decisione di progetto è registrata con la misura che l’ha decisa. Leggi la voce, poi porta una misura migliore.', cta: 'Leggi le decisioni →', href: 'decisions' },
       { h: 'Segnala cosa non funziona', p: 'Un fallimento ingoiato gonfia il tasso di acquisizione. Se ne trovi uno, o un gate che lascia passare qualcosa, apri una issue.', cta: 'Apri una issue →', href: 'issues' },
     ],
-    star: 'Metti una stella su GitHub',
+    star: 'Dai una stella su GitHub',
     contribute: 'Come contribuire',
   },
   howPage: {
