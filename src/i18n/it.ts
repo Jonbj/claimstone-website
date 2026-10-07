@@ -87,7 +87,7 @@ export const it: Dictionary = {
         title: 'Ottiene', name: 'acquire',
         p: 'Procura la migliore copia legale di ogni articolo, preferendo quelle ad accesso aperto, e non passa mai da biblioteche pirata. Registra ogni tentativo e perché è fallito, così sai quanta parte ha potuto davvero leggere.',
         writes: 'acquisitions.jsonl · raw/',
-        extra: { badge: 'In sviluppo', text: 'Gli articoli dietro paywall non si possono scaricare. Potrai aggiungere una copia procurata da te, dalla biblioteca o a pagamento. Passa per gli stessi controlli di identità e di testo completo e compare in una riga a parte, così non gonfia in silenzio la quota di articoli letti.' },
+        extra: { text: 'Gli articoli dietro paywall non si possono scaricare. Puoi aggiungere una copia procurata da te, dalla biblioteca o a pagamento. Passa per gli stessi controlli di identità e di testo completo e compare in una riga a parte, così non gonfia in silenzio la quota di articoli letti.' },
       },
       { title: 'Prepara', name: 'normalize', p: 'Trasforma PDF e pagine web in testo pulito e lo divide in passaggi, così ogni citazione si può ricondurre a un punto preciso.', writes: 'documents.jsonl · chunks.jsonl' },
       { title: 'Estrae', name: 'extract', p: 'Un modello propone le affermazioni che trova in ogni articolo. Poi il codice controlla ogni affermazione contro la sua citazione. Quelle che non superano il controllo sono scartate e messe in elenco.', writes: 'claims.jsonl · rejections.jsonl' },

@@ -20,7 +20,7 @@ const s = getDictionary(Astro.props.locale).stages;
           <h3>{i.title}</h3>
           <p>{i.p}</p>
           {i.extra && (
-            <p class="extra"><span class="badge">{i.extra.badge}</span> {i.extra.text}</p>
+            <p class="extra">{i.extra.text}</p>
           )}
           <span class="writes">{s.writesLabel} · {i.writes}</span>
         </li>
@@ -44,7 +44,6 @@ const s = getDictionary(Astro.props.locale).stages;
   h3 { font-size: 21px; font-weight: 600; }
   .stage p { color: var(--muted); font-size: 15px; }
   .extra { border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 4px; font-size: 14px; }
-  .badge { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-soft); border-radius: 4px; padding: 1px 7px; margin-right: 4px; }
   .writes { margin-top: 4px; font-family: var(--mono); font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
   @media (max-width: 960px) { .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 620px) { .stages { grid-template-columns: minmax(0, 1fr); } }

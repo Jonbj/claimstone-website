@@ -39,3 +39,13 @@ typed as `Dictionary`, and add `src/pages/<code>/` routes. `npm run verify` repo
 `.github/workflows/site.yml` builds on every push and pull request and, on `main`, publishes to GitHub Pages.
 The address is configuration: `SITE_URL` and `SITE_BASE` in that workflow (and the `Sitemap:` line in
 `public/robots.txt`). The site is served from https://claimstone.org (custom domain, set in the repository's Pages settings), so `SITE_BASE` is empty.
+
+## Before announcing the site
+
+The site already states things the engine has to be able to do. Check each before the project is publicised:
+
+- **Copies supplied by a person** (step 2, "Obtains"): the site says you can add a copy obtained from a library
+  or bought. In the engine this is B7b (file intake, quarantine, `operator-supplied` rows, the `supplied_copies`
+  policy). Until it ships, the text describes something that cannot yet be done.
+- **Status figures** (home, "Where it stands"): 37/40, 1,721, 271, 0 verdicts come from the engine README; re-derive
+  them with `tools/derive_corpus_figures.py` and update `src/i18n/` in both languages.

@@ -7,7 +7,7 @@ export interface StageItem {
   name: string;
   p: string;
   writes: string;
-  extra?: { badge: string; text: string };
+  extra?: { text: string };
 }
 
 export const en = {
@@ -97,7 +97,7 @@ export const en = {
         title: 'Obtains', name: 'acquire',
         p: 'Gets the best legal copy of each paper, preferring open access, and never goes through pirate libraries. It records every attempt and why it failed, so you know how much it could really read.',
         writes: 'acquisitions.jsonl · raw/',
-        extra: { badge: 'In development', text: 'Papers behind a paywall can’t be fetched. You will be able to add a copy you got yourself, from a library or by purchase. It goes through the same identity and full-text checks, and is reported on its own line, so it never quietly inflates how much was read.' },
+        extra: { text: 'Papers behind a paywall can’t be fetched. You can add a copy you got yourself, from a library or by purchase. It goes through the same identity and full-text checks, and is reported on its own line, so it never quietly inflates how much was read.' },
       },
       { title: 'Prepares', name: 'normalize', p: 'Turns PDFs and web pages into clean text and splits it into passages, so every quote can be traced back to an exact place.', writes: 'documents.jsonl · chunks.jsonl' },
       { title: 'Extracts', name: 'extract', p: 'A model proposes the claims it finds in each paper. The code then checks every claim against its quote. The ones that fail are rejected and listed.', writes: 'claims.jsonl · rejections.jsonl' },
