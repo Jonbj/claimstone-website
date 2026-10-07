@@ -104,7 +104,7 @@ export const it: Dictionary = {
       { name: 'CONTRADICTED', p: 'Le prove vanno nella direzione opposta.' },
       { name: 'CONTESTED_IN_LITERATURE', p: 'Le fonti sono in disaccordo, e il disaccordo è il risultato.' },
       { name: 'UNANSWERED_IN_LITERATURE', p: 'Le fonti lette non rispondono. Non equivale a «nessun effetto».' },
-      { name: 'NEVER_ASKED', p: 'La domanda non era nell’elenco fisso di quel round.' },
+      { name: 'NEVER_ASKED', p: 'Nessuno ha studiato questa domanda, e una persona ha verificato che non sia solo un vuoto della ricerca.' },
     ],
     fine: 'Le domande sono numerate e congelate. Cambiare l’elenco è un salto di versione datato, imposto da un digest di id, testo e tipo di ogni domanda.',
   },

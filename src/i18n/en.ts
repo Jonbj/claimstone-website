@@ -114,7 +114,7 @@ export const en = {
       { name: 'CONTRADICTED', p: 'The evidence points the other way.' },
       { name: 'CONTESTED_IN_LITERATURE', p: 'Sources disagree, and the disagreement is the finding.' },
       { name: 'UNANSWERED_IN_LITERATURE', p: 'The sources read do not answer it. That is not “no effect.”' },
-      { name: 'NEVER_ASKED', p: 'The question was not in the frozen list for that round.' },
+      { name: 'NEVER_ASKED', p: 'Nobody has studied this question, and a person checked that it is not just a gap in the search.' },
     ],
     fine: 'Questions are numbered and frozen. Changing the list is a dated version bump, enforced by a digest of every question’s id, text and kind.',
   },
