@@ -4,8 +4,8 @@ import sitemap from '@astrojs/sitemap';
 
 // The deployed address is configuration, not code: GitHub Pages serves a project site under
 // /<repo>, a custom domain serves from the root. Set SITE_URL and SITE_BASE in the workflow.
-const site = process.env.SITE_URL ?? 'https://jonbj.github.io';
-const base = process.env.SITE_BASE ?? '/claimstone-website';
+const site = process.env.SITE_URL ?? 'https://claimstone.org';
+const base = process.env.SITE_BASE ?? '';
 
 export default defineConfig({
   site,

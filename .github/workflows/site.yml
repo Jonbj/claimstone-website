@@ -15,9 +15,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # A project site is served under /<repo>. For a custom domain, set SITE_URL to it and SITE_BASE to "".
-  SITE_URL: https://jonbj.github.io
-  SITE_BASE: /claimstone-website
+  # Served from the custom domain, at the root. Without one, GitHub serves a project site under /<repo>.
+  SITE_URL: https://claimstone.org
+  SITE_BASE: ""
 
 jobs:
   build:

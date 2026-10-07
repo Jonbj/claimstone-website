@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jonbj.github.io/claimstone-website/sitemap-index.xml
+Sitemap: https://claimstone.org/sitemap-index.xml

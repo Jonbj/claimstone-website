@@ -4,7 +4,7 @@ import { readdir, readFile, access } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
 const dist = new URL('../dist/', import.meta.url).pathname;
-const base = (process.env.SITE_BASE ?? '/claimstone-website').replace(/\/+$/, '');
+const base = (process.env.SITE_BASE ?? '').replace(/\/+$/, '');
 
 async function* walk(dir) {
   for (const e of await readdir(dir, { withFileTypes: true })) {

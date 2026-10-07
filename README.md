@@ -5,7 +5,7 @@ It lives in its own repository, apart from the engine ([Jonbj/claimstone](https:
 
 ```bash
 npm install
-npm run dev        # http://localhost:4321/claimstone-website/
+npm run dev        # http://localhost:4321/
 npm run verify     # type check, build, then check links and language twins
 ```
 
@@ -38,4 +38,4 @@ typed as `Dictionary`, and add `src/pages/<code>/` routes. `npm run verify` repo
 
 `.github/workflows/site.yml` builds on every push and pull request and, on `main`, publishes to GitHub Pages.
 The address is configuration: `SITE_URL` and `SITE_BASE` in that workflow (and the `Sitemap:` line in
-`public/robots.txt`). For a custom domain set `SITE_BASE` to an empty string.
+`public/robots.txt`). The site is served from https://claimstone.org (custom domain, set in the repository's Pages settings), so `SITE_BASE` is empty.
