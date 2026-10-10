@@ -164,12 +164,51 @@ export const en = {
     rule: 'One rule is not negotiable: no claim enters without a verified quote. The rest is open to discussion.',
     ruleLink: 'Read the rule',
   },
+  blockMap: {
+    eyebrow: 'The map',
+    h2: 'Six blocks, and who does what.',
+    lede: 'Every project is organised in the same six blocks. Some are yours, some are Claimstone’s, and one only advises.',
+    label: 'Diagram of the six blocks: the protocol binds the pipeline, source selection and manual intake; the pipeline hands evidence profiles to human reading; execution watches all of them.',
+    legend: { you: 'You act', engine: 'Claimstone acts', advisory: 'Advisory only' },
+    profiles: 'evidence profiles',
+    floor: { h: 'Acquisition floor', p: 'below it: stop, no verdicts' },
+    protocol: {
+      name: 'Protocol',
+      p: 'Topics · frozen questions · source classes · acquisition floor',
+      note: 'You sign it. If it changes afterwards, the flow stops.',
+    },
+    pipeline: {
+      name: 'Pipeline',
+      p: 'Every claim carries a verbatim quote, checked by code. A second model re-reads each one.',
+    },
+    selection: {
+      name: 'Source selection',
+      p: 'Runs beside the pipeline. Its judgements are provisional (AI_PROVISIONAL). It recommends and never admits:',
+      items: ['the cohort stays open', 'no source is admitted from here', 'it is never marked complete'],
+    },
+    intake: {
+      name: 'Manual intake',
+      p: 'What you bring yourself:',
+      items: ['material to add', 'open decisions, required or optional'],
+      note: 'If something is required, this block asks for you.',
+    },
+    reading: {
+      name: 'Human reading',
+      p: 'You read the profile, check the quotes and sign.',
+      note: 'A verdict comes only from a person’s signature.',
+    },
+    execution: {
+      name: 'Execution',
+      p: 'Watches the operations of every block: authorised, running, finished.',
+      note: 'Each model call records its backend, model, harness version and prompt hash.',
+    },
+  },
   howPage: {
     title: 'How it works',
-    description: 'The six stages, the quote gate, the acquisition floor and the five verdict states that make up Claimstone.',
+    description: 'The six blocks, the six stages, the quote gate, the acquisition floor and the five verdict states that make up Claimstone.',
     eyebrow: 'How it works',
     h1: 'From a list of questions to an evidence profile.',
-    lede: 'Claimstone is six stages that talk through append-only files, and one person who signs at the end.',
+    lede: 'Claimstone is organised in six blocks. Inside the pipeline, six stages talk through plain append-only files, and one person signs at the end.',
     invariantsH2: 'Rules the engine does not bend',
     invariants: [
       { h: 'No claim without a verified quote', p: 'The quote must be an exact substring of its chunk, and every number and inequality in the claim must appear in it. Failures go to the rejection ledger.' },

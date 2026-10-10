@@ -154,12 +154,51 @@ export const it: Dictionary = {
     rule: 'Una regola non è negoziabile: nessuna affermazione entra senza citazione verificata. Il resto si discute.',
     ruleLink: 'Leggi la regola',
   },
+  blockMap: {
+    eyebrow: 'La mappa',
+    h2: 'Sei blocchi, e chi fa cosa.',
+    lede: 'Ogni progetto è organizzato negli stessi sei blocchi. Alcuni sono tuoi, altri di Claimstone, e uno soltanto consiglia.',
+    label: 'Schema dei sei blocchi: il protocollo vincola la pipeline, la selezione delle fonti e l’ingresso manuale; la pipeline consegna i profili di evidenza alla lettura umana; l’esecuzione li osserva tutti.',
+    legend: { you: 'Agisci tu', engine: 'Agisce Claimstone', advisory: 'Solo consultivo' },
+    profiles: 'profili di evidenza',
+    floor: { h: 'Soglia di acquisizione', p: 'sotto soglia: stop, nessun verdetto' },
+    protocol: {
+      name: 'Protocollo',
+      p: 'Temi · domande congelate · classi di fonte · soglia di acquisizione',
+      note: 'Lo firmi tu. Se cambia dopo, il flusso si ferma.',
+    },
+    pipeline: {
+      name: 'Pipeline',
+      p: 'Ogni affermazione porta una citazione verbatim, verificata dal codice. Un secondo modello rilegge ciascuna.',
+    },
+    selection: {
+      name: 'Selezione delle fonti',
+      p: 'Affianca la pipeline. I suoi giudizi sono provvisori (AI_PROVISIONAL). Consiglia e non ammette mai:',
+      items: ['la coorte resta aperta', 'da qui non entra nessuna fonte', 'non viene mai data per completa'],
+    },
+    intake: {
+      name: 'Ingresso manuale',
+      p: 'Quello che porti tu:',
+      items: ['materiale da aggiungere', 'decisioni aperte, obbligatorie o facoltative'],
+      note: 'Se qualcosa è obbligatorio, questo blocco ti chiama.',
+    },
+    reading: {
+      name: 'Lettura umana',
+      p: 'Leggi il profilo, controlli le citazioni e firmi.',
+      note: 'Il verdetto nasce solo dalla firma di una persona.',
+    },
+    execution: {
+      name: 'Esecuzione',
+      p: 'Osserva le operazioni di tutti i blocchi: autorizzate, in corso, concluse.',
+      note: 'Ogni chiamata a un modello registra backend, modello, versione dell’harness e hash del prompt.',
+    },
+  },
   howPage: {
     title: 'Come funziona',
-    description: 'Le sei fasi, il controllo delle citazioni, la soglia di acquisizione e i cinque stati di verdetto che compongono Claimstone.',
+    description: 'I sei blocchi, le sei fasi, il controllo delle citazioni, la soglia di acquisizione e i cinque stati di verdetto che compongono Claimstone.',
     eyebrow: 'Come funziona',
     h1: 'Da un elenco di domande a un profilo di evidenza.',
-    lede: 'Claimstone è fatto di sei fasi che comunicano tramite file append-only, e di una persona che firma alla fine.',
+    lede: 'Claimstone è organizzato in sei blocchi. Dentro la pipeline, sei fasi comunicano tramite semplici file append-only, e una persona firma alla fine.',
     invariantsH2: 'Regole che il motore non piega',
     invariants: [
       { h: 'Nessuna affermazione senza citazione verificata', p: 'La citazione deve essere una sottostringa esatta del suo chunk, e ogni numero e disuguaglianza dell’affermazione deve comparirvi. Ciò che fallisce va nel registro dei rifiuti.' },

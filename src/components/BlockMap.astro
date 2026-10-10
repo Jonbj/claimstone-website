@@ -1,0 +1,132 @@
+---
+import { getDictionary, type Locale } from '../i18n';
+interface Props { locale: Locale }
+const m = getDictionary(Astro.props.locale).blockMap;
+const top = ['discover', 'acquire', 'normalize'];
+const bottom = ['extract', 'review', 'synthesize'];
+---
+<section class="band" id="map">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">{m.eyebrow}</p>
+      <h2>{m.h2}</h2>
+      <p>{m.lede}</p>
+    </div>
+
+    <ul class="legend">
+      <li><span class="sw you"></span>{m.legend.you}</li>
+      <li><span class="sw engine"></span>{m.legend.engine}</li>
+      <li><span class="sw advisory"></span>{m.legend.advisory}</li>
+    </ul>
+
+    <div class="map" role="group" aria-label={m.label}>
+      <div class="block you protocol">
+        <h3><span class="n">1</span>{m.protocol.name}</h3>
+        <p>{m.protocol.p}</p>
+        <p class="note">{m.protocol.note}</p>
+      </div>
+
+      <span class="arrow d1" aria-hidden="true">↓</span>
+      <span class="arrow d2" aria-hidden="true">↓</span>
+      <span class="arrow d3" aria-hidden="true">↓</span>
+
+      <div class="block advisory selection">
+        <h3><span class="n">3</span>{m.selection.name}</h3>
+        <p>{m.selection.p}</p>
+        <ul>{m.selection.items.map((i) => <li>{i}</li>)}</ul>
+      </div>
+
+      <span class="arrow a1" aria-hidden="true">→</span>
+
+      <div class="block engine pipeline">
+        <h3><span class="n">2</span>{m.pipeline.name}</h3>
+        <ol class="chips">{top.map((s) => <li>{s}</li>)}</ol>
+        <p class="floor"><strong>{m.floor.h}</strong> · {m.floor.p}</p>
+        <ol class="chips">{bottom.map((s) => <li>{s}</li>)}</ol>
+        <p>{m.pipeline.p}</p>
+      </div>
+
+      <span class="arrow a2" aria-hidden="true">←</span>
+
+      <div class="block you intake">
+        <h3><span class="n">4</span>{m.intake.name}</h3>
+        <p>{m.intake.p}</p>
+        <ul>{m.intake.items.map((i) => <li>{i}</li>)}</ul>
+        <p class="note">{m.intake.note}</p>
+      </div>
+
+      <span class="arrow d4" aria-hidden="true">↓ <small>{m.profiles}</small></span>
+
+      <div class="block you reading">
+        <h3><span class="n">6</span>{m.reading.name}</h3>
+        <p>{m.reading.p}</p>
+        <p class="note">{m.reading.note}</p>
+      </div>
+
+      <div class="block engine execution">
+        <h3><span class="n">5</span>{m.execution.name}</h3>
+        <p>{m.execution.p}</p>
+        <p class="note">{m.execution.note}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .legend { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 20px; font-size: 14px; color: var(--muted); }
+  .legend li { display: flex; align-items: center; gap: 8px; }
+  .sw { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--muted); }
+
+  .you { background: var(--accent-soft); border-color: var(--accent); }
+  .engine { background: var(--surface); border-color: var(--muted); }
+  .advisory { background: transparent; border-color: var(--muted); border-style: dashed; }
+
+  .map {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1.4fr) 36px minmax(0, 1fr);
+    grid-template-areas:
+      'p  p  p  p  p'
+      'd1 .  d2 .  d3'
+      's  a1 m  a2 i'
+      '.  .  d4 .  .'
+      '.  r  r  r  .'
+      'e  e  e  e  e';
+    align-items: stretch;
+  }
+  .protocol { grid-area: p; }
+  .selection { grid-area: s; }
+  .pipeline { grid-area: m; }
+  .intake { grid-area: i; }
+  .reading { grid-area: r; }
+  .execution { grid-area: e; margin-top: 12px; }
+  .d1 { grid-area: d1; } .d2 { grid-area: d2; } .d3 { grid-area: d3; } .d4 { grid-area: d4; }
+  .a1 { grid-area: a1; } .a2 { grid-area: a2; }
+
+  .block { border-width: 2px; border-style: solid; border-radius: 12px; padding: 20px; display: grid; gap: 10px; align-content: start; }
+  .advisory.block { border-style: dashed; }
+  .block h3 { font-size: 19px; font-weight: 600; display: flex; align-items: baseline; gap: 10px; }
+  .n { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--accent-ink); }
+  .block p { color: var(--fg); font-size: 15px; }
+  .block ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 2px; }
+  .note { color: var(--muted); font-size: 14px; }
+
+  .chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: var(--mono); font-size: 12.5px; }
+  .chips li { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; position: relative; color: var(--fg); }
+  .chips li + li::before { content: '→'; position: absolute; left: -17px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+  .floor { border: 1.5px solid var(--accent); border-radius: 8px; padding: 8px 12px; font-size: 13px; background: var(--accent-soft); }
+  .floor strong { font-weight: 600; }
+
+  .arrow { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 22px; line-height: 1; gap: 8px; }
+  .arrow small { font-size: 13px; }
+  .a1 { justify-self: center; }
+
+  @media (max-width: 900px) {
+    .map {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: 'p' 'd2' 'm' 's' 'i' 'd4' 'r' 'e';
+    }
+    .d1, .d3, .a1, .a2 { display: none; }
+    .arrow { padding-block: 2px; }
+  }
+</style>
