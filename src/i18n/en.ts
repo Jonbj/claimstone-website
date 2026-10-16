@@ -137,11 +137,11 @@ export const en = {
     columns: [
       {
         label: 'Works today',
-        p: 'All six steps run, from the search to the evidence profile. One full round was run on open-access articles from PubMed Central about screen time: 37 of the 40 papers found were obtained, above the 80% threshold set in advance. It produced 1,721 accepted annotations and 271 rejected ones, all listed.',
+        p: 'All six steps run, from the search to the evidence profile. One full round was run on open-access articles from PubMed Central about screen time: 37 of the 40 papers found were obtained, above the 80% threshold set in advance. It produced 1,721 accepted annotations and 271 rejected ones, all listed. A local portal follows the work: reading is open, writing needs an operator account.',
       },
       {
         label: 'Not yet',
-        p: 'No verdict has been signed. The first profile is ready for a person to read; the other seven are provisional. Two other collections of papers stayed below their threshold, so Claimstone correctly produced nothing for them. The portal for following the work is read-only for now.',
+        p: 'No verdict has been signed. The first profile is ready for a person to read; the other seven are provisional. Two other collections of papers stayed below their threshold, so Claimstone correctly produced nothing for them. There is no hosted service: the portal runs where your data is.',
       },
       {
         label: 'Where help is wanted',

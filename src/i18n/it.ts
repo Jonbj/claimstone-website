@@ -127,11 +127,11 @@ export const it: Dictionary = {
     columns: [
       {
         label: 'Funziona già',
-        p: 'Tutti e sei i passi funzionano, dalla ricerca al profilo di evidenza. Un round completo è stato eseguito su articoli ad accesso aperto di PubMed Central sul tempo di schermo: 37 dei 40 articoli trovati sono stati ottenuti, sopra la soglia dell’80% fissata in anticipo. Ha prodotto 1.721 annotazioni accettate e 271 rifiutate, tutte in elenco.',
+        p: 'Tutti e sei i passi funzionano, dalla ricerca al profilo di evidenza. Un round completo è stato eseguito su articoli ad accesso aperto di PubMed Central sul tempo di schermo: 37 dei 40 articoli trovati sono stati ottenuti, sopra la soglia dell’80% fissata in anticipo. Ha prodotto 1.721 annotazioni accettate e 271 rifiutate, tutte in elenco. Un portale locale segue il lavoro: la lettura è aperta, la scrittura richiede un account operatore.',
       },
       {
         label: 'Non ancora',
-        p: 'Nessun verdetto è stato firmato. Il primo profilo è pronto per essere letto da una persona; gli altri sette sono provvisori. Altre due raccolte di articoli sono rimaste sotto la soglia, quindi Claimstone non ha prodotto nulla, come deve. Il portale per seguire il lavoro per ora è in sola lettura.',
+        p: 'Nessun verdetto è stato firmato. Il primo profilo è pronto per essere letto da una persona; gli altri sette sono provvisori. Altre due raccolte di articoli sono rimaste sotto la soglia, quindi Claimstone non ha prodotto nulla, come deve. Non c’è un servizio ospitato: il portale gira dove stanno i tuoi dati.',
       },
       {
         label: 'Dove serve aiuto',

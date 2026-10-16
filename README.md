@@ -46,7 +46,12 @@ The address is configuration: `SITE_URL` and `SITE_BASE` in that workflow (and t
 The site already states things the engine has to be able to do. Check each before the project is publicised:
 
 - **Copies supplied by a person** (step 2, "Obtains"): the site says you can add a copy obtained from a library
-  or bought. In the engine this is B7b (file intake, quarantine, `operator-supplied` rows, the `supplied_copies`
-  policy). Until it ships, the text describes something that cannot yet be done.
+  or bought. This shipped in the engine: the portal's authenticated control API takes DOIs, links and files
+  (quarantine, the engine's own gates, the `supplied_copies` policy, default `separate`), and a purchase stays
+  a recorded offer until a person acts on it — see `docs/contracts/intake.md` in the engine. Check the flow
+  still matches that contract.
+- **Portal wording** (home, "Where it stands"): the site says reading is open and writing needs an operator
+  account, and that there is no hosted service. Check this against the engine's `docs/HANDOFF.md`: the portal
+  is local-first and loopback by default.
 - **Status figures** (home, "Where it stands"): 37/40, 1,721, 271, 0 verdicts come from the engine README; re-derive
   them with `tools/derive_corpus_figures.py` and update `src/i18n/` in both languages.
